@@ -2,6 +2,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Search, MessageCircle } from 'lucide-react';
 import heroImage from '@/assets/mangalore-clocktower.jpg';
+import kambalaImage from '@/assets/kambala-racing.jpg';
 
 const Hero = () => {
   return (
@@ -61,14 +62,33 @@ const Hero = () => {
             </div>
           </div>
 
-          {/* Image */}
-          <div className="relative animate-float">
-            <div className="absolute inset-0 bg-primary-glow/20 rounded-3xl blur-3xl"></div>
-            <img 
-              src={heroImage} 
-              alt="Smart Mangalore Cityscape" 
-              className="relative rounded-3xl shadow-2xl w-full h-auto"
-            />
+          {/* Images Grid */}
+          <div className="space-y-6">
+            {/* Modern Mangalore - Clock Tower */}
+            <div className="relative animate-float">
+              <div className="absolute inset-0 bg-primary-glow/20 rounded-3xl blur-3xl"></div>
+              <img 
+                src={heroImage} 
+                alt="Mangalore Clock Tower - Modern City" 
+                className="relative rounded-3xl shadow-2xl w-full h-64 object-cover"
+              />
+              <div className="absolute bottom-4 left-4 bg-background/80 backdrop-blur-sm rounded-lg px-3 py-2">
+                <p className="text-sm font-medium text-foreground">Modern Mangalore</p>
+              </div>
+            </div>
+
+            {/* Cultural Heritage - Kambala */}
+            <div className="relative animate-float" style={{ animationDelay: '2s' }}>
+              <div className="absolute inset-0 bg-secondary/20 rounded-3xl blur-3xl"></div>
+              <img 
+                src={kambalaImage} 
+                alt="Traditional Kambala Buffalo Racing - Mangalore Culture" 
+                className="relative rounded-3xl shadow-2xl w-full h-64 object-cover"
+              />
+              <div className="absolute bottom-4 left-4 bg-background/80 backdrop-blur-sm rounded-lg px-3 py-2">
+                <p className="text-sm font-medium text-foreground">Cultural Heritage - Kambala</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
