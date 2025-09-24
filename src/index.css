@@ -2,9 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Smart Mangalore AI Design System - All colors MUST be HSL */
 
 @layer base {
   :root {
@@ -17,26 +15,48 @@ All colors MUST be HSL.
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Smart City Blue Theme */
+    --primary: 220 100% 50%;
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 220 100% 70%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Mangalore Green Accents */
+    --secondary: 150 40% 45%;
+    --secondary-foreground: 0 0% 100%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    /* Tech Gray Tones */
+    --muted: 220 14% 96%;
+    --muted-foreground: 220 8.9% 46.1%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 220 14% 96%;
+    --accent-foreground: 220 8.9% 15%;
+
+    /* Emergency Orange */
+    --emergency: 15 100% 55%;
+    --emergency-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 220 100% 50%;
 
     --radius: 0.5rem;
+
+    /* Smart City Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));
+    --gradient-hero: linear-gradient(135deg, hsl(220 100% 50%) 0%, hsl(150 40% 45%) 100%);
+    --gradient-card: linear-gradient(135deg, hsl(220 100% 98%) 0%, hsl(220 60% 96%) 100%);
+    
+    /* Shadows & Effects */
+    --shadow-smart: 0 10px 40px -10px hsl(var(--primary) / 0.2);
+    --shadow-emergency: 0 10px 30px -10px hsl(var(--emergency) / 0.3);
+    --shadow-glow: 0 0 30px hsl(var(--primary-glow) / 0.3);
+
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
     --sidebar-background: 0 0% 98%;
 
@@ -102,4 +122,72 @@ All colors MUST be HSL.
   body {
     @apply bg-background text-foreground;
   }
+}
+
+@layer components {
+  /* Hero Background Animation */
+  .hero-bg {
+    background: var(--gradient-hero);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .hero-bg::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 30% 20%, hsl(var(--primary-glow) / 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 70% 80%, hsl(var(--secondary) / 0.1) 0%, transparent 50%);
+    animation: pulse 4s ease-in-out infinite;
+  }
+  
+  /* Smart Card Styles */
+  .feature-card {
+    background: var(--gradient-card);
+    box-shadow: var(--shadow-smart);
+    transition: var(--transition-smooth);
+  }
+  
+  .feature-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-glow);
+  }
+  
+  /* Emergency Button */
+  .emergency-btn {
+    box-shadow: var(--shadow-emergency);
+    background: hsl(var(--emergency));
+    transition: var(--transition-bounce);
+  }
+  
+  .emergency-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 15px 35px -10px hsl(var(--emergency) / 0.4);
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.8; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
 }
