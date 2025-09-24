@@ -41,10 +41,12 @@ const Hero = () => {
               {/* Quick Actions */}
               <div className="flex flex-wrap gap-2">
                 {[
+                  "Tourism guide Mangalore",
                   "Bus to Forum Mall",
                   "NITK Campus Guide", 
                   "Emergency Hospitals",
-                  "Doctor Appointments"
+                  "Doctor Appointments",
+                  "Best homestays near beach"
                 ].map((query) => (
                   <Button 
                     key={query}

@@ -8,7 +8,11 @@ import {
   MapPin,
   Clock,
   Navigation,
-  Heart
+  Heart,
+  MapIcon,
+  Bed,
+  Camera,
+  Star
 } from 'lucide-react';
 
 const Features = () => {
@@ -20,6 +24,14 @@ const Features = () => {
       highlights: ["Live GPS tracking", "Weather-adjusted ETAs", "Route optimization", "Crowd prediction"],
       cta: "Track Buses",
       gradient: "from-primary to-primary-glow"
+    },
+    {
+      icon: <MapIcon className="w-8 h-8" />,
+      title: "Tourist Guide & Stay",
+      description: "Comprehensive tourism guide with instant accommodation finder. Discover attractions, book homestays, hotels, and lodges across Mangalore.",
+      highlights: ["Tourist attractions", "Homestay finder", "Hotel booking", "Local experiences"],
+      cta: "Explore Tourism",
+      gradient: "from-secondary to-primary-glow"
     },
     {
       icon: <GraduationCap className="w-8 h-8" />,
