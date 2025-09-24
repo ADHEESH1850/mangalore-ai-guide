@@ -1,7 +1,7 @@
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Search, MessageCircle } from 'lucide-react';
-import heroImage from '@/assets/hero-mangalore.jpg';
+import heroImage from '@/assets/mangalore-clocktower.jpg';
 
 const Hero = () => {
   return (
