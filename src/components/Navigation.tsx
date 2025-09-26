@@ -20,11 +20,13 @@ const Navigation = () => {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <div className="flex items-center space-x-3">
-            <img 
-              src={logo} 
-              alt="Smart Mangalore Logo" 
-              className="w-10 h-10 rounded-lg object-cover"
-            />
+            <div className="relative">
+              <img 
+                src={logo} 
+                alt="Smart Mangalore Logo" 
+                className="w-14 h-14 rounded-lg object-cover shadow-lg backdrop-blur-sm bg-white/10 border border-white/20"
+              />
+            </div>
             <div>
               <h1 className="text-xl font-bold text-gradient">Smart Mangalore</h1>
               <p className="text-xs text-muted-foreground">AI City Guide</p>
