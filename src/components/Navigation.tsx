@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { Menu, X, Brain, AlertTriangle } from 'lucide-react';
+import { Menu, X, AlertTriangle } from 'lucide-react';
+import logo from '@/assets/smart-mangalore-logo.jpg';
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -18,10 +19,12 @@ const Navigation = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <div className="flex items-center space-x-2">
-            <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center">
-              <Brain className="w-6 h-6 text-primary-foreground" />
-            </div>
+          <div className="flex items-center space-x-3">
+            <img 
+              src={logo} 
+              alt="Smart Mangalore Logo" 
+              className="w-10 h-10 rounded-lg object-cover"
+            />
             <div>
               <h1 className="text-xl font-bold text-gradient">Smart Mangalore</h1>
               <p className="text-xs text-muted-foreground">AI City Guide</p>
