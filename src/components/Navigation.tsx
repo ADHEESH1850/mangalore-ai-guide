@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Menu, X, AlertTriangle } from 'lucide-react';
-import logo from '@/assets/smart-mangalore-logo.png';
+import logo from '@/assets/smart-mangalore-logo-modern.png';
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
