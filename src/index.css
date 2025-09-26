@@ -175,6 +175,8 @@
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+    filter: drop-shadow(0 2px 10px rgba(220, 220, 255, 0.4));
   }
   
   .animate-float {
