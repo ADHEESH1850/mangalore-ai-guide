@@ -10,7 +10,7 @@ const Hero = () => {
           <div className="space-y-4">
             <h1 className="text-5xl md:text-7xl font-bold text-primary-foreground">
               Smart Mangalore
-              <span className="block text-gradient font-extrabold drop-shadow-lg" style={{ textShadow: '0 4px 8px rgba(0, 0, 0, 0.3), 0 2px 4px rgba(0, 0, 0, 0.2)' }}>AI Assistant</span>
+              <span className="block text-gradient font-extrabold">AI Assistant</span>
             </h1>
             <p className="text-xl text-primary-foreground/90 max-w-3xl mx-auto">
               Your intelligent city guide for Mangalore. Get real-time bus tracking, 
