@@ -1,5 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
+import { Link } from 'react-router-dom';
 import { 
   Bus, 
   GraduationCap, 
@@ -12,11 +13,21 @@ import {
   MapIcon,
   Bed,
   Camera,
-  Star
+  Star,
+  Activity
 } from 'lucide-react';
 
 const Features = () => {
   const features = [
+    {
+      icon: <Activity className="w-8 h-8" />,
+      title: "Urban Mobility",
+      description: "AI-powered traffic management with real-time monitoring, congestion prediction, and dynamic route optimization.",
+      highlights: ["Live Traffic Analysis", "Signal Control", "Safety Analytics"],
+      cta: "Open Dashboard",
+      gradient: "from-blue-500 to-cyan-500",
+      link: "/mobility"
+    },
     {
       icon: <Bus className="w-8 h-8" />,
       title: "Smart Bus Tracking",
@@ -102,11 +113,21 @@ const Features = () => {
                 </div>
                 
                 {/* CTA Button */}
-                <Button 
-                  className={`w-full bg-gradient-to-r ${feature.gradient} text-white hover:opacity-90 transition-opacity`}
-                >
-                  {feature.cta}
-                </Button>
+                {feature.link ? (
+                  <Link to={feature.link}>
+                    <Button 
+                      className={`w-full bg-gradient-to-r ${feature.gradient} text-white hover:opacity-90 transition-opacity`}
+                    >
+                      {feature.cta}
+                    </Button>
+                  </Link>
+                ) : (
+                  <Button 
+                    className={`w-full bg-gradient-to-r ${feature.gradient} text-white hover:opacity-90 transition-opacity`}
+                  >
+                    {feature.cta}
+                  </Button>
+                )}
               </CardContent>
             </Card>
           ))}
