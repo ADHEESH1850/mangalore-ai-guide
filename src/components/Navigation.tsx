@@ -1,10 +1,22 @@
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { Menu, X, AlertTriangle } from 'lucide-react';
+import { Menu, X, AlertTriangle, LogIn, LogOut, User } from 'lucide-react';
+import { Link, useNavigate } from 'react-router-dom';
+import { useAuth } from '@/hooks/useAuth';
 import logo from '@/assets/smart-mangalore-brain-logo.png';
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { user, signOut, isAdmin } = useAuth();
+  const navigate = useNavigate();
+
+  const handleAuthAction = () => {
+    if (user) {
+      signOut();
+    } else {
+      navigate('/auth');
+    }
+  };
 
   const navItems = [
     { name: 'Tourism', href: '#tourism' },
@@ -34,7 +46,10 @@ const Navigation = () => {
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center space-x-6">
+            <Link to="/" className="text-foreground hover:text-primary transition-colors">
+              Home
+            </Link>
             {navItems.map((item) => (
               <a
                 key={item.name}
@@ -44,9 +59,32 @@ const Navigation = () => {
                 {item.name}
               </a>
             ))}
-            <Button variant="outline" className="emergency-btn">
-              <AlertTriangle className="w-4 h-4 mr-2" />
-              Emergency
+            {isAdmin && (
+              <Link 
+                to="/mobility" 
+                className="text-foreground hover:text-primary transition-colors font-medium"
+              >
+                Dashboard
+              </Link>
+            )}
+            {user && (
+              <div className="flex items-center gap-2 text-sm text-foreground/80">
+                <User className="h-4 w-4" />
+                <span className="max-w-[120px] truncate">{user.email}</span>
+              </div>
+            )}
+            <Button onClick={handleAuthAction} variant="outline" size="sm">
+              {user ? (
+                <>
+                  <LogOut className="h-4 w-4 mr-2" />
+                  Sign Out
+                </>
+              ) : (
+                <>
+                  <LogIn className="h-4 w-4 mr-2" />
+                  Sign In
+                </>
+              )}
             </Button>
           </div>
 
@@ -65,6 +103,13 @@ const Navigation = () => {
         {/* Mobile Navigation */}
         {isOpen && (
           <div className="md:hidden py-4 space-y-4 border-t border-border">
+            <Link 
+              to="/" 
+              className="block py-2 text-foreground hover:text-primary transition-colors"
+              onClick={() => setIsOpen(false)}
+            >
+              Home
+            </Link>
             {navItems.map((item) => (
               <a
                 key={item.name}
@@ -75,9 +120,33 @@ const Navigation = () => {
                 {item.name}
               </a>
             ))}
-            <Button variant="outline" className="emergency-btn w-full">
-              <AlertTriangle className="w-4 h-4 mr-2" />
-              Emergency
+            {isAdmin && (
+              <Link 
+                to="/mobility" 
+                className="block py-2 text-foreground hover:text-primary transition-colors font-medium"
+                onClick={() => setIsOpen(false)}
+              >
+                Dashboard
+              </Link>
+            )}
+            {user && (
+              <div className="flex items-center gap-2 text-sm text-foreground/80 py-2">
+                <User className="h-4 w-4" />
+                <span className="truncate">{user.email}</span>
+              </div>
+            )}
+            <Button onClick={handleAuthAction} variant="outline" size="sm" className="w-full">
+              {user ? (
+                <>
+                  <LogOut className="h-4 w-4 mr-2" />
+                  Sign Out
+                </>
+              ) : (
+                <>
+                  <LogIn className="h-4 w-4 mr-2" />
+                  Sign In
+                </>
+              )}
             </Button>
           </div>
         )}
